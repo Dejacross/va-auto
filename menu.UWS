@@ -1,0 +1,38 @@
+DIM WINDOWNAME[] = "BlueStacks_1"
+
+DIM MENU[] = "デイリー補給","金貨購入","メール回収","工場回収","金貨収集","連盟ギフト回収"
+
+SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
+
+SELECT SLCT
+  CASE  1
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every1Day_000_collect_daily_supply.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  2
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every1Day_001_buy_gold.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  4
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every1Day_002_get_mail.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  8
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every3hours_001_collect_factory.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  16
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every3hours_002_collect_gold.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  32
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL Every8hours_001_collect_union_treasure.UWS(WINDOWNAME[I])
+    NEXT
+SELEND
