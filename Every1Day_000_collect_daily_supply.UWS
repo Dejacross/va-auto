@@ -22,18 +22,20 @@ ACW(GETID(VIVI_WINDOW))
 FOR I = 0 TO LENGTH(CRICK_POS_X) -1
 
 BTN(LEFT,CLICK,WINDOW01_X + CRICK_POS_X[I],WINDOW01_Y + CRICK_POS_Y[I],800)
-IF PARAM_STR[0] = "BlueStack" THEN
-    IF I = 2 THEN
-        SLEEP(1)
+
+// スクリーンショット取得
+//IF PARAM_STR[0] = "BlueStack" THEN
+//    IF I = 2 THEN
+//        SLEEP(1)
 //	SAVEIMG( IMGDIR + "\" + NOW, VIVI_WINDOW) //, WINDOW01_X　+ 300, WINDOW01_Y + 300, 300, 300
         // ctrl + shift + s スクリーンショット
-        KBD(VK_CTRL,DOWN, 500)
-        KBD(VK_SHIFT,DOWN, 500)
-        KBD(VK_S,CLICK, 250)
-        KBD(VK_SHIFT,UP, 250)
-        KBD(VK_CTRL,UP, 250)
-    ENDIF
-ENDIF
+//        KBD(VK_CTRL,DOWN, 500)
+//        KBD(VK_SHIFT,DOWN, 500)
+//        KBD(VK_S,CLICK, 250)
+//        KBD(VK_SHIFT,UP, 250)
+//        KBD(VK_CTRL,UP, 250)
+//    ENDIF
+//ENDIF
 
 NEXT
 
