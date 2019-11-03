@@ -1,6 +1,6 @@
 DIM WINDOWNAME[] = "BlueStacks_1"
 
-DIM MENU[] = "連盟科学","連盟マシン","連盟要塞建造","補給争奪回収"
+DIM MENU[] = "連盟科学","連盟マシン","連盟要塞建造","補給争奪回収","連盟ギフト回収"
 
 SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
 
@@ -24,5 +24,10 @@ SELECT SLCT
     FOR I = 0 TO LENGTH(WINDOWNAME) - 1
       SLEEP(1)
       CALL union_supply.UWS(WINDOWNAME[I])
+    NEXT
+  CASE  16
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+      SLEEP(1)
+      CALL union_gift.UWS(WINDOWNAME[I])
     NEXT
 SELEND
