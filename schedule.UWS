@@ -1,0 +1,102 @@
+// 1: デイリーメニュー
+// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
+
+// 2: unionメニュー
+// 1:"連盟科学",2:"連盟マシン",4"連盟ギフト回収",8"補給争奪回収",16:"連盟要塞建造"
+
+// 4: attackメニュー
+// 1:"ハンマー自動on",2:"npc攻撃",4:"ハンマー攻撃max 3",8:"領地採集",16:"サブ攻撃"
+
+// # # ファイル名用の現在時刻を取得
+GETTIME()
+NOW = G_TIME_YY4 + G_TIME_MM2 + G_TIME_DD2 + "_" + G_TIME_HH2 + G_TIME_NN2 + G_TIME_SS2
+
+// 1:00台
+
+IF ( G_TIME_HH = 1 ) AND ( G_TIME_NN = 00 ) THEN
+// 1:00
+	// デイリーメニュー
+	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
+
+	// CALL schedule_menu.UWS()
+	DIM MENU[] = 1,2,4,8,16,32
+
+	FOR I = 0 TO LENGTH(MENU) - 1
+	CALL schedule_menu.UWS(1,MENU[I])
+	NEXT
+
+	// unionメニュー
+	// 1:"連盟科学",2:"連盟マシン",
+	DIM MENU02[] = 1,2,4
+
+	FOR I = 0 TO LENGTH(MENU02) - 1
+	CALL schedule_menu.UWS(2,MENU02[I])
+	NEXT
+
+	// attackメニュー
+	// "ハンマー自動on","npc攻撃","ハンマー攻撃max 3","領地採集","サブ攻撃"
+	// DIM MENU03[][] = 1,2,4,8
+
+   	// FOR I = 0 TO LENGTH(MENU03) - 1
+	// CALL schedule_menu.UWS(4,MENU03[I])
+   	// NEXT
+ELSEIF ( G_TIME_HH MOD 4 = 0 ) AND ( G_TIME_NN = 00 )  THEN
+
+	// unionメニュー
+        // 1:"連盟科学",2:"連盟マシン",4"連盟ギフト回収",8"補給争奪回収",16:"連盟要塞建造"
+	DIM MENU02[] = 4
+
+	FOR I = 0 TO LENGTH(MENU02) - 1
+	CALL schedule_menu.UWS(2,MENU02[I])
+	NEXT
+
+ELSEIF ( G_TIME_HH MOD 5 = 0 ) THEN
+
+	// デイリーメニュー
+	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
+
+	// CALL schedule_menu.UWS()
+	DIM MENU[] = 1,4
+
+	FOR I = 0 TO LENGTH(MENU) - 1
+	CALL schedule_menu.UWS(1,MENU[I])
+	NEXT
+
+	// unionメニュー
+        // 1:"連盟科学",2:"連盟マシン",4"連盟ギフト回収",8"補給争奪回収",16:"連盟要塞建造"
+	DIM MENU02[] = 1
+
+	FOR I = 0 TO LENGTH(MENU02) - 1
+	CALL schedule_menu.UWS(2,MENU02[I])
+	NEXT
+
+
+ELSEIF ( G_TIME_HH MOD 9 = 0 ) THEN
+
+	// デイリーメニュー
+	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
+
+	// CALL schedule_menu.UWS()
+	DIM MENU[] = 1,2,4
+
+	FOR I = 0 TO LENGTH(MENU) - 1
+	CALL schedule_menu.UWS(1,MENU[I])
+	NEXT
+
+ELSE
+// いつも実行
+
+	// デイリーメニュー
+	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
+
+	// CALL schedule_menu.UWS()
+	DIM MENU[] = 4
+
+	FOR I = 0 TO LENGTH(MENU) - 1
+	CALL schedule_menu.UWS(1,MENU[I])
+	NEXT
+
+ENDIF
+// 1:xx
+
+
