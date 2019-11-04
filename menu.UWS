@@ -2,7 +2,10 @@ DIM WINDOWNAME[] = "BlueStacks_1"
 
 DIM MENU[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収"
 
-SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
+IF LENGTH(PARAM_STR[0]) > 0 THEN
+	MSGBOX("NO: T" + PARAM_STR[0])
+ELSE
+	SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
 
 SELECT SLCT
   CASE  1
@@ -42,3 +45,6 @@ SELECT SLCT
       CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
     NEXT
 SELEND
+
+
+ENDIF
