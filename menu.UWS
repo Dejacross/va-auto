@@ -1,6 +1,6 @@
 DIM WINDOWNAME[] = "BlueStacks_1"
 
-DIM MENU[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収"
+DIM MENU[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","ALL"
 
 IF LENGTH(PARAM_STR[0]) > 0 THEN
 	MSGBOX("NO: T" + PARAM_STR[0])
@@ -43,6 +43,22 @@ SELECT SLCT
     FOR I = 0 TO LENGTH(WINDOWNAME) - 1
       SLEEP(1)
       CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
+    NEXT
+  DEFAULT
+    // ALL
+    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+        SLEEP(1)
+        CALL Every4hours_001_collect_gold.UWS(WINDOWNAME[I])
+        SLEEP(1)
+        CALL Every8hours_001_collect_factory.UWS(WINDOWNAME[I])
+        SLEEP(1)
+        CALL Every1Day_000_collect_daily_supply.UWS(WINDOWNAME[I])
+        SLEEP(1)
+        CALL Every1Day_001_buy_gold.UWS(WINDOWNAME[I])
+        SLEEP(1)
+        CALL Every1Day_002_get_mail.UWS(WINDOWNAME[I])
+        SLEEP(1)
+        CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
     NEXT
 SELEND
 

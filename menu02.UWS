@@ -1,11 +1,11 @@
 DIM WINDOWNAME[] = "BlueStacks_1"
 
-DIM MENU[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","連盟要塞建造"
+DIM MENU[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","ALL"
 
 IF LENGTH(PARAM_STR[0]) > 0 THEN
 	MSGBOX("NO: T" + PARAM_STR[0])
 ELSE
-	SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
+//	SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
 
 SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",MENU)
 
@@ -28,10 +28,17 @@ SELECT SLCT
   CASE  8
     FOR I = 0 TO LENGTH(WINDOWNAME) - 1
       SLEEP(1)
-      CALL union_build.UWS(WINDOWNAME[I])
+      CALL union_supply.UWS(WINDOWNAME[I])
     NEXT
-  CASE  16
+  DEFAULT
     FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+    // ALL
+      SLEEP(1)
+      CALL union_science.UWS(WINDOWNAME[I])
+      SLEEP(1)
+      CALL union_machine.UWS(WINDOWNAME[I])
+      SLEEP(1)
+      CALL union_gift.UWS(WINDOWNAME[I])
       SLEEP(1)
       CALL union_supply.UWS(WINDOWNAME[I])
     NEXT
