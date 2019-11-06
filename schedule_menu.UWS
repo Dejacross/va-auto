@@ -63,17 +63,12 @@ ELSEIF MENU = 2 THEN
 	  CASE  4
 	    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
 	      SLEEP(1)
-	      CALL union_build.UWS(WINDOWNAME[I])
+	      CALL union_gift.UWS(WINDOWNAME[I])
 	    NEXT
 	  CASE  8
 	    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
 	      SLEEP(1)
 	      CALL union_supply.UWS(WINDOWNAME[I])
-	    NEXT
-	  CASE  16
-	    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
-	      SLEEP(1)
-	      CALL union_gift.UWS(WINDOWNAME[I])
 	    NEXT
 	SELEND
 
