@@ -1,0 +1,186 @@
+DIM WINDOWNAME[] = "BlueStacks_1"
+
+DIM MENULIST[] = "daily","union","attack","chrome"
+
+DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収(未実装)","ALL"
+DIM UNIONLIST[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","ALL"
+DIM ATTAKLIST[] = "ハンマー自動集結","NPC攻撃"
+DIM CHROMLIST[] = "open","close","reload"
+
+
+IF LENGTH(PARAM_STR[0]) > 0 THEN
+
+// スケジュール動作
+  MENU = PARAM_STR[0]
+  SLCT = PARAM_STR[1]
+
+ELSE
+
+// ユーザーメニュー
+  MENU = SLCTBOX(SLCT_BTN,0,0,0,"",MENULIST)
+
+  SELECT MENU
+    CASE 1
+		  SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",DAILYLIST)
+    CASE 2
+		  SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",UNIONLIST)
+    CASE 4
+		  SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",ATTAKLIST)
+    CASE 8
+		  SLCT = SLCTBOX(SLCT_BTN,0,0,0,"",CHROMLIST)
+  SELEND
+
+ENDIF
+
+SELECT MENU
+  CASE -1
+    EXIT
+  CASE 1
+
+// dailyメニュー
+
+    SELECT SLCT
+      CASE -1
+        EXIT
+      CASE  1
+        // 金貨収集
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every4hours_001_collect_gold.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  2
+        // 工場回収
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every8hours_001_collect_factory.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  4
+        // デイリー補給
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every1Day_000_collect_daily_supply.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  8
+        // 金貨購入
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every1Day_001_buy_gold.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  16
+        // メール回収
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every1Day_002_get_mail.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  32
+        // 税金徴収
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+          SLEEP(1)
+          CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
+        NEXT
+      CASE  64
+        // 英雄回収
+		  DEFAULT
+		    // ALL
+		    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+		        SLEEP(1)
+		        CALL Every4hours_001_collect_gold.UWS(WINDOWNAME[I])
+		        SLEEP(1)
+		        CALL Every8hours_001_collect_factory.UWS(WINDOWNAME[I])
+		        SLEEP(1)
+		        CALL Every1Day_000_collect_daily_supply.UWS(WINDOWNAME[I])
+		        SLEEP(1)
+		        CALL Every1Day_001_buy_gold.UWS(WINDOWNAME[I])
+		        SLEEP(1)
+		        CALL Every1Day_002_get_mail.UWS(WINDOWNAME[I])
+		        SLEEP(1)
+		        CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
+		    NEXT
+    SELEND
+
+  CASE 2
+
+// unionメニュー
+
+	  SELECT SLCT
+	    CASE -1
+	      EXIT
+	    CASE  1
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL union_science.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  2
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL union_machine.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  4
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL union_gift.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  8
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL union_supply.UWS(WINDOWNAME[I])
+	      NEXT
+		  DEFAULT
+		    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+		    // ALL
+		      SLEEP(1)
+		      CALL union_science.UWS(WINDOWNAME[I])
+		      SLEEP(1)
+		      CALL union_machine.UWS(WINDOWNAME[I])
+		      SLEEP(1)
+		      CALL union_gift.UWS(WINDOWNAME[I])
+		      SLEEP(1)
+		      CALL union_supply.UWS(WINDOWNAME[I])
+		    NEXT
+	  SELEND
+
+  CASE 4
+
+// attackメニュー
+
+	  SELECT SLCT
+	    CASE -1
+	      EXIT
+	    CASE  1
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL attack_auto.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  2
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL attack_npc.UWS(WINDOWNAME[I])
+	      NEXT
+	   SELEND
+
+  CASE 8
+
+// chromeメニュー
+
+	  SELECT SLCT
+	    CASE -1
+	      EXIT
+	    CASE  1
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL chrome_open.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  2
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL chrome_close.UWS(WINDOWNAME[I])
+	      NEXT
+	    CASE  4
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL chrome_reload.UWS(WINDOWNAME[I])
+	      NEXT
+	   SELEND
+
+SELEND
+

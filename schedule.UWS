@@ -1,11 +1,14 @@
-// 1: デイリーメニュー
+// 1: daily
 // 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
 
-// 2: unionメニュー
+// 2: union
 // 1:"連盟科学",2:"連盟マシン",4"連盟ギフト回収",8"補給争奪回収"
 
-// 4: attackメニュー
+// 4: attack
 // 1:"ハンマー自動on",2:"npc攻撃",4:"ハンマー攻撃max 3",8:"領地採集",16:"サブ攻撃"
+
+// 8: chromeメニュー
+// 1:"open",2:"close",4:"reload"
 
 // # # ファイル名用の現在時刻を取得
 GETTIME()
@@ -19,13 +22,13 @@ IF ( G_TIME_HH = 1 ) AND ( G_TIME_NN = 00 ) THEN
 	// デイリーメニュー
 	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
 	FOR I IN SPLIT("1,2,4,8,16,32",",")
-		CALL schedule_menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 	// unionメニュー
 	// 1:"連盟科学",2:"連盟マシン",
 	FOR I IN SPLIT("1,2,4",",")
-		CALL schedule_menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 	// attackメニュー
@@ -33,14 +36,14 @@ IF ( G_TIME_HH = 1 ) AND ( G_TIME_NN = 00 ) THEN
 	// DIM MENU03[][] = 1,2,4,8
 
    	// FOR I = 0 TO LENGTH(MENU03) - 1
-	// CALL schedule_menu.UWS(4,MENU03[I])
+	// CALL menu.UWS(4,MENU03[I])
    	// NEXT
 ELSEIF ( G_TIME_HH MOD 4 = 0 ) AND ( G_TIME_NN = 00 )  THEN
 
 	// unionメニュー
 	// 1:"連盟科学",2:"連盟マシン",
 	FOR I IN SPLIT("4",",")
-		CALL schedule_menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSEIF ( G_TIME_HH MOD 5 = 0 ) AND ( G_TIME_NN = 00 )  THEN
@@ -48,13 +51,13 @@ ELSEIF ( G_TIME_HH MOD 5 = 0 ) AND ( G_TIME_NN = 00 )  THEN
 	// デイリーメニュー
 	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
 	FOR I IN SPLIT("1,4",",")
-		CALL schedule_menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 	// unionメニュー
 	// 1:"連盟科学",2:"連盟マシン",
 	FOR I IN SPLIT("1",",")
-		CALL schedule_menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSEIF ( G_TIME_HH MOD 9 = 0 ) THEN
@@ -62,7 +65,7 @@ ELSEIF ( G_TIME_HH MOD 9 = 0 ) THEN
 	// デイリーメニュー
 	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
 	FOR I IN SPLIT("1,2,4",",")
-		CALL schedule_menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSE
@@ -71,7 +74,7 @@ ELSE
 	// デイリーメニュー
 	// 1:"金貨収集",2:"工場回収",4:"デイリー補給",8:"金貨購入",16:"メール回収",32:"税金徴収"
 	FOR I IN SPLIT("4",",")
-		CALL schedule_menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
+		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ENDIF
