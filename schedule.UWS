@@ -35,15 +35,18 @@ IF ( G_TIME_HH = 1 ) AND ( G_TIME_NN = 00 ) THEN
 	// "ハンマー自動on","npc攻撃","ハンマー攻撃max 3","領地採集","サブ攻撃"
 	// DIM MENU03[][] = 1,2,4,8
 
-   	// FOR I = 0 TO LENGTH(MENU03) - 1
-	// CALL menu.UWS(4,MENU03[I])
-   	// NEXT
 ELSEIF ( G_TIME_HH MOD 4 = 0 ) AND ( G_TIME_NN = 00 )  THEN
 
 	// unionメニュー
 	// 1:"連盟科学",2:"連盟マシン",
 	FOR I IN SPLIT("4",",")
 		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
+	NEXT
+
+	// attackメニュー
+	// 1:"ハンマー自動on",2:"npc攻撃"
+	FOR I IN SPLIT("1",",")
+		CALL menu.UWS(4,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSEIF ( G_TIME_HH MOD 5 = 0 ) AND ( G_TIME_NN = 00 )  THEN
