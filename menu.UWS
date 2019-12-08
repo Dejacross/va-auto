@@ -2,15 +2,16 @@ DIM WINDOWNAME[] = "BlueStacks_1"
 
 DIM MENULIST[] = "daily","union","attack","chrome"
 
-DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収(未実装)","ALL"
+DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収","ALL"
 DIM UNIONLIST[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","ALL"
 DIM ATTAKLIST[] = "ハンマー自動集結","NPC攻撃"
 DIM CHROMLIST[] = "open","close","reload"
 
 
 IF LENGTH(PARAM_STR[0]) > 0 THEN
-
 // スケジュール動作
+
+
   MENU = PARAM_STR[0]
   SLCT = PARAM_STR[1]
 
@@ -80,6 +81,10 @@ SELECT MENU
         NEXT
       CASE  64
         // 英雄回収
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+					SLEEP(1)
+					CALL Every1Day_000_collect_daily_hero.UWS(WINDOWNAME[I])
+        NEXT
 		  DEFAULT
 		    // ALL
 		    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
