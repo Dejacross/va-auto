@@ -80,7 +80,7 @@ ELSEIF ( G_TIME_HH MOD 9 = 0 ) THEN
 		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
-ELSEIF ( G_TIME_HH = 12 ) THEN
+ELSEIF ( G_TIME_HH = 13 ) THEN
 
   // attackÉÅÉjÉÖÅ[
 	FOR I IN SPLIT("4",",")
