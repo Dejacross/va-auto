@@ -4,7 +4,7 @@ DIM MENULIST[] = "daily","union","attack","chrome"
 
 DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収","ALL"
 DIM UNIONLIST[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","ALL"
-DIM ATTAKLIST[] = "ハンマー自動集結","NPC攻撃"
+DIM ATTAKLIST[] = "ハンマー自動集結","NPC攻撃","BOSS攻撃"
 DIM CHROMLIST[] = "open","close","reload"
 
 
@@ -174,7 +174,12 @@ SELECT MENU
 	        SLEEP(1)
 	        CALL attack_npc.UWS(WINDOWNAME[I],ENEMY_SELECT,LEVEL_SELECT)
 	      NEXT
-	   SELEND
+	    CASE  4
+	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+	        SLEEP(1)
+	        CALL attack_boss.UWS(WINDOWNAME[I])
+	      NEXT
+    SELEND
 
   CASE 8
 
