@@ -157,9 +157,22 @@ SELECT MENU
 	        CALL attack_auto.UWS(WINDOWNAME[I])
 	      NEXT
 	    CASE  2
+				IF LENGTH(PARAM_STR[0]) <= 0 THEN
+
+					DIM ENEMY_LIST[3] = "—b•º‘gD", "”½­•{ŒR", "”½—ŒR"
+					ENEMY_SELECT = POPUPMENU(ENEMY_LIST, 0,0)
+
+					DIM LEVEL_LIST[20] = -9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10
+					LEVEL_SELECT = POPUPMENU(LEVEL_LIST, 0,0) - 9
+
+				ELSE
+					ENEMY_SELECT = 0
+					LEVEL_SELECT = 0
+				ENDIF
+
 	      FOR I = 0 TO LENGTH(WINDOWNAME) - 1
 	        SLEEP(1)
-	        CALL attack_npc.UWS(WINDOWNAME[I])
+	        CALL attack_npc.UWS(WINDOWNAME[I],ENEMY_SELECT,LEVEL_SELECT)
 	      NEXT
 	   SELEND
 

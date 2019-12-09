@@ -1,81 +1,90 @@
 // 1: daily
-// 1:"é‡‘è²¨åŽé›†",2:"å·¥å ´å›žåŽ",4:"ãƒ‡ã‚¤ãƒªãƒ¼è£œçµ¦",8:"é‡‘è²¨è³¼å…¥",16:"ãƒ¡ãƒ¼ãƒ«å›žåŽ",32:"ç¨Žé‡‘å¾´åŽ"
+// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû",64:"‰p—Y‰ñŽû"
 
 // 2: union
-// 1:"é€£ç›Ÿç§‘å­¦",2:"é€£ç›Ÿãƒžã‚·ãƒ³",4"é€£ç›Ÿã‚®ãƒ•ãƒˆå›žåŽ",8"è£œçµ¦äº‰å¥ªå›žåŽ"
+// 1:"˜A–¿‰ÈŠw",2:"˜A–¿ƒ}ƒVƒ“",4"˜A–¿ƒMƒtƒg‰ñŽû",8"•â‹‹‘ˆ’D‰ñŽû"
 
 // 4: attack
-// 1:"ãƒãƒ³ãƒžãƒ¼è‡ªå‹•on",2:"npcæ”»æ’ƒ",4:"ãƒãƒ³ãƒžãƒ¼æ”»æ’ƒmax 3",8:"é ˜åœ°æŽ¡é›†",16:"ã‚µãƒ–æ”»æ’ƒ"
+// 1:"ƒnƒ“ƒ}[Ž©“®on",2:"npcUŒ‚",4:"ƒnƒ“ƒ}[UŒ‚max 3",8:"—Ì’nÌW",16:"ƒTƒuUŒ‚"
 
-// 8: chromeãƒ¡ãƒ‹ãƒ¥ãƒ¼
+// 8: chromeƒƒjƒ…[
 // 1:"open",2:"close",4:"reload"
 
-// # # ãƒ•ã‚¡ã‚¤ãƒ«åç”¨ã®ç¾åœ¨æ™‚åˆ»ã‚’å–å¾—
+// # # ƒtƒ@ƒCƒ‹–¼—p‚ÌŒ»ÝŽž‚ðŽæ“¾
 GETTIME()
 NOW = G_TIME_YY4 + G_TIME_MM2 + G_TIME_DD2 + "_" + G_TIME_HH2 + G_TIME_NN2 + G_TIME_SS2
 
-// 1:00å°
+// 1:00‘ä
 
 IF ( G_TIME_HH = 1 ) AND ( G_TIME_NN = 00 ) THEN
 // 1:00
 
-	// ãƒ‡ã‚¤ãƒªãƒ¼ãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é‡‘è²¨åŽé›†",2:"å·¥å ´å›žåŽ",4:"ãƒ‡ã‚¤ãƒªãƒ¼è£œçµ¦",8:"é‡‘è²¨è³¼å…¥",16:"ãƒ¡ãƒ¼ãƒ«å›žåŽ",32:"ç¨Žé‡‘å¾´åŽ"
-	FOR I IN SPLIT("1,2,4,8,16,32",",")
+	// ƒfƒCƒŠ[ƒƒjƒ…[
+	// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû"
+	FOR I IN SPLIT("1,2,4,8,16,32,64",",")
 		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
-	// unionãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é€£ç›Ÿç§‘å­¦",2:"é€£ç›Ÿãƒžã‚·ãƒ³",
+	// unionƒƒjƒ…[
+	// 1:"˜A–¿‰ÈŠw",2:"˜A–¿ƒ}ƒVƒ“",
 	FOR I IN SPLIT("1,2,4",",")
 		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
-	// attackãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// "ãƒãƒ³ãƒžãƒ¼è‡ªå‹•on","npcæ”»æ’ƒ","ãƒãƒ³ãƒžãƒ¼æ”»æ’ƒmax 3","é ˜åœ°æŽ¡é›†","ã‚µãƒ–æ”»æ’ƒ"
+	// attackƒƒjƒ…[
+	// "ƒnƒ“ƒ}[Ž©“®on","npcUŒ‚","ƒnƒ“ƒ}[UŒ‚max 3","—Ì’nÌW","ƒTƒuUŒ‚"
 	// DIM MENU03[][] = 1,2,4,8
+
+ELSEIF ( G_TIME_HH = 2 ) THEN
+// 2:00‘ä
+
+	// ƒfƒCƒŠ[ƒƒjƒ…[
+	// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû"
+	FOR I IN SPLIT("4,64",",")
+		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
+	NEXT
 
 ELSEIF ( G_TIME_HH MOD 4 = 0 ) AND ( G_TIME_NN = 00 )  THEN
 
-	// unionãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é€£ç›Ÿç§‘å­¦",2:"é€£ç›Ÿãƒžã‚·ãƒ³",
+	// unionƒƒjƒ…[
+	// 1:"˜A–¿‰ÈŠw",2:"˜A–¿ƒ}ƒVƒ“",
 	FOR I IN SPLIT("4",",")
 		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
-	// attackãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"ãƒãƒ³ãƒžãƒ¼è‡ªå‹•on",2:"npcæ”»æ’ƒ"
+	// attackƒƒjƒ…[
+	// 1:"ƒnƒ“ƒ}[Ž©“®on",2:"npcUŒ‚"
 	FOR I IN SPLIT("1",",")
 		CALL menu.UWS(4,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSEIF ( G_TIME_HH MOD 5 = 0 ) AND ( G_TIME_NN = 00 )  THEN
 
-	// ãƒ‡ã‚¤ãƒªãƒ¼ãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é‡‘è²¨åŽé›†",2:"å·¥å ´å›žåŽ",4:"ãƒ‡ã‚¤ãƒªãƒ¼è£œçµ¦",8:"é‡‘è²¨è³¼å…¥",16:"ãƒ¡ãƒ¼ãƒ«å›žåŽ",32:"ç¨Žé‡‘å¾´åŽ"
+	// ƒfƒCƒŠ[ƒƒjƒ…[
+	// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû"
 	FOR I IN SPLIT("1,4",",")
 		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
-	// unionãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é€£ç›Ÿç§‘å­¦",2:"é€£ç›Ÿãƒžã‚·ãƒ³",
+	// unionƒƒjƒ…[
+	// 1:"˜A–¿‰ÈŠw",2:"˜A–¿ƒ}ƒVƒ“",
 	FOR I IN SPLIT("1",",")
 		CALL menu.UWS(2,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSEIF ( G_TIME_HH MOD 9 = 0 ) THEN
 
-	// ãƒ‡ã‚¤ãƒªãƒ¼ãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é‡‘è²¨åŽé›†",2:"å·¥å ´å›žåŽ",4:"ãƒ‡ã‚¤ãƒªãƒ¼è£œçµ¦",8:"é‡‘è²¨è³¼å…¥",16:"ãƒ¡ãƒ¼ãƒ«å›žåŽ",32:"ç¨Žé‡‘å¾´åŽ"
+	// ƒfƒCƒŠ[ƒƒjƒ…[
+	// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû"
 	FOR I IN SPLIT("1,2,4",",")
 		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
 
 ELSE
-// ã„ã¤ã‚‚å®Ÿè¡Œ
+// ‚¢‚Â‚àŽÀs
 
-	// ãƒ‡ã‚¤ãƒªãƒ¼ãƒ¡ãƒ‹ãƒ¥ãƒ¼
-	// 1:"é‡‘è²¨åŽé›†",2:"å·¥å ´å›žåŽ",4:"ãƒ‡ã‚¤ãƒªãƒ¼è£œçµ¦",8:"é‡‘è²¨è³¼å…¥",16:"ãƒ¡ãƒ¼ãƒ«å›žåŽ",32:"ç¨Žé‡‘å¾´åŽ"
+	// ƒfƒCƒŠ[ƒƒjƒ…[
+	// 1:"‹à‰ÝŽûW",2:"Hê‰ñŽû",4:"ƒfƒCƒŠ[•â‹‹",8:"‹à‰Ýw“ü",16:"ƒ[ƒ‹‰ñŽû",32:"Å‹à’¥Žû"
 	FOR I IN SPLIT("4",",")
 		CALL menu.UWS(1,VARTYPE(I,VAR_SMALLINT))
 	NEXT
