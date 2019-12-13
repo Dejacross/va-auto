@@ -2,7 +2,7 @@ DIM WINDOWNAME[] = "BlueStacks_1"
 
 DIM MENULIST[] = "daily","union","attack","chrome"
 
-DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収","ALL"
+DIM DAILYLIST[] = "金貨収集","工場回収","デイリー補給","金貨購入","メール回収","税金徴収","英雄回収","英雄回収(高級)","ALL"
 DIM UNIONLIST[] = "連盟科学","連盟マシン","連盟ギフト回収","補給争奪回収","ALL"
 DIM ATTAKLIST[] = "ハンマー自動集結","NPC攻撃","BOSS攻撃"
 DIM CHROMLIST[] = "open","close","reload"
@@ -58,6 +58,7 @@ SELECT MENU
       CASE  4
         // デイリー補給
         FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+					
           SLEEP(1)
           CALL Every1Day_000_collect_daily_supply.UWS(WINDOWNAME[I])
         NEXT
@@ -85,6 +86,12 @@ SELECT MENU
 					SLEEP(1)
 					CALL Every1Day_000_collect_daily_hero.UWS(WINDOWNAME[I])
         NEXT
+      CASE  128
+        // 英雄回収(高級)
+        FOR I = 0 TO LENGTH(WINDOWNAME) - 1
+					SLEEP(1)
+					CALL Every1Day_000_collect_daily_hero.UWS(WINDOWNAME[I],1)
+        NEXT
 		  DEFAULT
 		    // ALL
 		    FOR I = 0 TO LENGTH(WINDOWNAME) - 1
@@ -100,6 +107,8 @@ SELECT MENU
 		        CALL Every1Day_002_get_mail.UWS(WINDOWNAME[I])
 		        SLEEP(1)
 		        CALL Every1Day_003_collect_tax.UWS(WINDOWNAME[I])
+						SLEEP(1)
+						CALL Every1Day_000_collect_daily_hero.UWS(WINDOWNAME[I])
 		    NEXT
     SELEND
 
