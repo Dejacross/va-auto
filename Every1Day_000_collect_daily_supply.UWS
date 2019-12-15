@@ -3,12 +3,6 @@ VIVI_WINDOW = GETID( PARAM_STR[0] )
 WINDOW01_X = STATUS( VIVI_WINDOW, ST_X)
 WINDOW01_Y = STATUS( VIVI_WINDOW, ST_Y)
 
-// 画像保存場所
-IMGDIR = "log\daily_supply"
-// # # ファイル名用の現在時刻を取得
-// GETTIME()
-// NOW = G_TIME_YY4 + G_TIME_MM2 + G_TIME_DD2 + "_" + G_TIME_HH2 + G_TIME_MM2 + G_TIME_SS2
-
 // デイリー補給
 
 // クリック座標
@@ -21,21 +15,7 @@ ACW(GETID(VIVI_WINDOW))
 
 FOR I = 0 TO LENGTH(CRICK_POS_X) -1
 
-BTN(LEFT,CLICK,WINDOW01_X + CRICK_POS_X[I],WINDOW01_Y + CRICK_POS_Y[I],800)
-
-// スクリーンショット取得
-//IF PARAM_STR[0] = "BlueStack" THEN
-//    IF I = 2 THEN
-//        SLEEP(1)
-//	SAVEIMG( IMGDIR + "\" + NOW, VIVI_WINDOW) //, WINDOW01_X　+ 300, WINDOW01_Y + 300, 300, 300
-        // ctrl + shift + s スクリーンショット
-//        KBD(VK_CTRL,DOWN, 500)
-//        KBD(VK_SHIFT,DOWN, 500)
-//        KBD(VK_S,CLICK, 250)
-//        KBD(VK_SHIFT,UP, 250)
-//        KBD(VK_CTRL,UP, 250)
-//    ENDIF
-//ENDIF
+BTN(LEFT,CLICK, WINDOW01_X + CRICK_POS_X[I] + RANDOM(3), WINDOW01_Y + CRICK_POS_Y[I] + RANDOM(3), 800 + (RANDOM(3) * 100))
 
 NEXT
 
