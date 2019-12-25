@@ -6,9 +6,12 @@ WINDOW01_Y = STATUS( VIVI_WINDOW, ST_Y)
 // Chrome を閉じる
 
 // クリック座標
-DIM CRICK_POS_X[] =  10, 280, 210, 150,    40
-DIM CRICK_POS_Y[] =  10, 770, 670,  20,   130
-DIM INTERVAL[]    = 100, 800, 800, 800, 20000
+// 広告回避
+DIM MENU_POS_X[]  = 280, 300
+
+DIM CRICK_POS_X[] =  10, MENU_POS_X[0],  210,  150,  372,  400,  300,   30,   70,    40
+DIM CRICK_POS_Y[] =  10,           770,  670,   20,   90,   90,  170,   90,  340,   130
+DIM INTERVAL[]    = 100,          2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 20000
 
 // ループ開始
 FOR I = 0 TO LENGTH(CRICK_POS_X) -1
